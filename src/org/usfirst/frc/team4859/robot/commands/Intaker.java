@@ -15,7 +15,7 @@ public class Intaker extends CommandGroup {
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	double speed = 0.5;
+    	double speed = 1;
 	/*	Joystick joystick1 = Robot.oi.getJoystick();
 	 speed =joystick1.getThrottle(); 
 	 */

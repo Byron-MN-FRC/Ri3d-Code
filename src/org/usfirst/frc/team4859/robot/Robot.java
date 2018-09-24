@@ -7,9 +7,12 @@
 
 package org.usfirst.frc.team4859.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoMode;
 import edu.wpi.first.wpilibj.ADXL345_I2C;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -18,6 +21,7 @@ import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4859.robot.commands.Driveforward;
 import org.usfirst.frc.team4859.robot.subsystems.Aquisition;
 import org.usfirst.frc.team4859.robot.subsystems.Arm;
 import org.usfirst.frc.team4859.robot.subsystems.Chassis;
@@ -39,6 +43,8 @@ public class Robot extends TimedRobot {
 	double accelY;
 	AnalogGyro gyro;
 	public static double accelAngle = 0;
+	public static UsbCamera cameraBackward = CameraServer.getInstance().startAutomaticCapture("Backward", 1);
+	public static UsbCamera cameraForward = CameraServer.getInstance().startAutomaticCapture("Forward", 0);
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -52,15 +58,19 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		accel = new BuiltInAccelerometer(); 
 		accel = new BuiltInAccelerometer(Accelerometer.Range.k4G); 
-		gyro = new AnalogGyro(1);
+		//gyro = new AnalogGyro(1);
+	
 /*
 		arm.tiltBackward();
 		arm.armUp();
 		arm.startingPosition();
 */
-		
-		// m_chooser.addDefault("Default Auto", new DriveWithJoystick());
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		cameraBackward.setVideoMode(VideoMode.PixelFormat.kMJPEG, 320, 240, 10);
+		cameraBackward.setExposureManual(70);
+		cameraForward.setVideoMode(VideoMode.PixelFormat.kMJPEG, 320, 240, 10);
+		cameraForward.setExposureManual(70);
+		m_chooser.addDefault("Default Auto", new Driveforward(0.5,3));
+		m_chooser.addObject("My Auto", new Driveforward(0.5,3));
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
@@ -122,8 +132,10 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		
-		
+	/*	arm.tiltBackward();
+		arm.armDown();
+		arm.robotReady();
+		*/
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}

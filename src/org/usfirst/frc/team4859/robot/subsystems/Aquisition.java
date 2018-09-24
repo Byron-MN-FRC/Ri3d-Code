@@ -22,12 +22,12 @@ public class Aquisition extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void eject (double speed) {
-    
+       speed = -speed;
     	leftmotor.set(speed);
     	rightmotor.set(-speed);
     }
     public void intake (double speed) {
-    
+    	 speed = -speed;
     	leftmotor.set(-speed);
     	rightmotor.set(speed);
     	

@@ -16,9 +16,8 @@ public class Ejector extends CommandGroup {
         //      addSequential(new Command2());
         // these will run in order.
     	double speed = 0.5;
-    	Joystick joystick1 = Robot.oi.getJoystick();
-    	 speed =joystick1.getThrottle();
-    	
+    	/*
+    	*/
     	addSequential(new EjectCube(speed));
         // To run multiple commands at the same time,
         // use addParallel()

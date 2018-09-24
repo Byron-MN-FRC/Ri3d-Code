@@ -2,6 +2,7 @@ package org.usfirst.frc.team4859.robot.commands;
 
 import org.usfirst.frc.team4859.robot.Robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -16,6 +17,10 @@ public class EjectCube extends Command {
         // eg. requires(chassis);
     	requires(Robot.aquisition);
     	speed = inputspeed;
+    	if(inputspeed==2) {
+    /*		Joystick joystick1 = Robot.oi.getJoystick();
+       	 speed =joystick1.getThrottle();*/
+    	}
     }
 
     // Called just before this Command runs the first time

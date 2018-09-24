@@ -67,7 +67,7 @@ public class Chassis extends Subsystem
 		x *= RobotMap.xAxisScale;
 		y *= RobotMap.yAxisScale;
 		twist *= RobotMap.twistScale;
-		
+	/*	
 		// X variable correction
 		boolean isYneg = y < 0;
 		boolean isXneg = x < 0;
@@ -104,10 +104,10 @@ public class Chassis extends Subsystem
 		
 		error = joyAngle-Robot.accelAngle;
 		errorPercent = error/joyAngle;
-		
+	
 		x -= x*(0.5*errorPercent); 
 		y += y*(0.5*errorPercent);
-		
+		*/
 		SmartDashboard.putString("Robot Mode", (RobotMap.pMode) ? "Slow" : "Normal");	
 		
 		chassisDrive.mecanumDrive_Cartesian(x, y, twist, 0);

@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class ArmAssemblyDown extends CommandGroup {
 
-    public ArmAssemblyDown() {
+    public ArmAssemblyDown(double time) {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new ArmBackward(.05));
-    	addSequential(new ArmDown(.05));
+    	addSequential(new ArmBackward(time));
+    	addSequential(new ArmDown(time));
     	/*addSequential(new ArmForward(.1));*/
         // To run multiple commands at the same time,
         // use addParallel()

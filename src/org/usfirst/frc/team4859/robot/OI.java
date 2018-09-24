@@ -35,8 +35,8 @@ public class OI {
 	Joystick joystick = new Joystick(0);
 	
 	//Buttons
-	Button intake = new JoystickButton(joystick, 5);
-	Button eject = new JoystickButton(joystick, 3);
+	Button intake = new JoystickButton(joystick, 3);
+	Button eject = new JoystickButton(joystick, 5);
 	Button flipMode = new JoystickButton(joystick, 2);
 	Button precisionMode = new JoystickButton(joystick, 1);
 	Button liftUp = new JoystickButton(joystick, 6);
@@ -59,8 +59,15 @@ public class OI {
 		intake.whenReleased(new ArmBackward(0));
 		precisionMode.toggleWhenPressed(new PrecisionMode());
 		flipMode.toggleWhenPressed(new FlipMode());
-		liftUp.whenPressed(new ArmAssemblyUp());
-		liftDown.whenPressed(new ArmAssemblyDown());
+		//liftUp.whenPressed(new ArmAssemblyUp(0));
+		//liftDown.whenPressed(new ArmAssemblyDown(0));
+		//liftUp.whenPressed(new ArmBackward(0));
+		liftUp.whenPressed(new ArmUp(0));
+		if(RobotMap.isArmReady == true) {
+			liftDown.whenReleased(new ArmReady(0));
+		}
+		//liftDown.whenPressed(new ArmBackward(0));
+		liftDown.whenPressed(new ArmDown(0));
 		
 		//temp testing
 		armUptest.whenPressed(new ArmUp(0));
