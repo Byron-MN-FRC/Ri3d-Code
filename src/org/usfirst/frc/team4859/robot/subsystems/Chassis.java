@@ -59,8 +59,10 @@ public class Chassis extends Subsystem
 		
 		// Apply flip if the flip button is toggled
 		if (RobotMap.fMode) {
-			y *= -1;
-			x *= -1;
+			double inty = y;
+			double intx = x;
+			y = intx;
+			x = inty;
 		}
 		
 		// Final joystick value adjustments

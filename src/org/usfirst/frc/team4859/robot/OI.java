@@ -35,10 +35,10 @@ public class OI {
 	Joystick joystick = new Joystick(0);
 	
 	//Buttons
-	Button intake = new JoystickButton(joystick, 3);
-	Button eject = new JoystickButton(joystick, 5);
-	Button flipMode = new JoystickButton(joystick, 2);
-	Button precisionMode = new JoystickButton(joystick, 1);
+	Button intake = new JoystickButton(joystick, 2);
+	Button eject = new JoystickButton(joystick, 3);
+	Button flipMode = new JoystickButton(joystick, 1);
+	Button precisionMode = new JoystickButton(joystick, 5);
 	Button liftUp = new JoystickButton(joystick, 6);
 	Button liftDown = new JoystickButton(joystick, 4);
 	
